@@ -4,6 +4,7 @@
 # Custom PATH exports
 export PATH="$HOME/charles/bin:$PATH"
 export PATH=$PATH:$HOME/scripts
+export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/tony/.oh-my-zsh"
