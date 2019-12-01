@@ -112,8 +112,9 @@ plugins=(
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#
-alias ll="ls -alF"
+
+# Not necessary as defined in .oh-my-zsh/lib/directories.zsh
+# alias ll="ls -alF"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
