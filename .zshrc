@@ -231,3 +231,13 @@ export KEYTIMEOUT=40
 bindkey -M viins "jj" vi-cmd-mode
 
 
+export http_proxy="http://127.0.0.1:8888/"
+export ftp_proxy="ftp://127.0.0.1:8888/"
+export rsync_proxy="rsync://127.0.0.1:8888/"
+export no_proxy="localhost,127.0.0.1,192.168.1.1,::1,*.local"
+export HTTP_PROXY="http://127.0.0.1:8888/"
+export FTP_PROXY="ftp://127.0.0.1:8888/"
+export RSYNC_PROXY="rsync://127.0.0.1:8888/"
+export NO_PROXY="localhost,127.0.0.1,192.168.1.1,::1,*.local"
+export https_proxy="http://127.0.0.1:8888/"
+export HTTPS_PROXY="http://127.0.0.1:8888/"

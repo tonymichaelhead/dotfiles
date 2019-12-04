@@ -46,7 +46,7 @@ signal=10
 # See the script for details.
 
 [volume]
-label=𝅘𝅥𝅮  
+label=&#x266A;
 #label=VOL
 instance=Master
 interval=once
