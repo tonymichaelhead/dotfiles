@@ -119,10 +119,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # # Multi-screen screenshots with scrot
-bindsym F11 exec escrotum 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # All screens
+bindsym F11 exec escrotum 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' && notify-send "Took a screenshot!"
 
 # Area selection screenshots
-bindsym F12 exec escrotum -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # Area selection
+bindsym F12 exec escrotum -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' && notify-send "Took a screenshot!"
 
 # Run emoji selector
 bindsym $mod+backslash exec ~/scripts/dmenuunicode
@@ -195,6 +195,15 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
+# Cycle through active workspaces
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
+# Alternative to cycle through workspaces
+bindsym $mod+bracketright workspace next
+bindsym $mod+bracketleft workspace prev
+
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -249,7 +258,7 @@ bindsym $mod+k exec variety -n
 # Variety prev pic
 bindsym $mod+b exec variety -p
 # Variety favorite current
-bindsym $mod+v exec variety -f
+bindsym $mod+v exec "variety -f && notify-send 'Saved background to favorites!'"
 
 # Set inner and outer gaps
 gaps inner 10
@@ -259,14 +268,16 @@ gaps outer 5
 for_window [class="^.*"] border pixel 2
 
 # Keyboard layouts
-exec --no-startup-id "setxkbmap us -variant colemak"
+exec --no-startup-id "setxkbmap us -variant colemak; xset r 66"
 
 # Add xfce panel
 # exec --no-startup-id xfce4-panel --disable-wm-check
 
-# Start browser
+# Start firefox
 bindsym $mod+j exec $BROWSER
 
+# Start "dev" chrome with ssl errors turned off
+bindsym $mod+c exec "nohup google-chrome-stable --ignore-certificate-errors --ignore-ssl-errors &"
 # Toggle i3 bar
 bindsym $mod+m bar mode toggle
 
