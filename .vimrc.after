@@ -13,7 +13,8 @@ set updatetime=100
 inoremap jj <ESC>
 
 " Enable scrolling with mouse
-:set mouse=a
+" set mouse=a
+" set ttymouse=sgr
 
 " Remap homerow movement keys for colemak
 " noremap n j

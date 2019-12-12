@@ -244,11 +244,14 @@ bindsym $mod+r mode "resize"
 #        status_command i3status
 #}
 
-bar {
-        position top
-        font pango: Hack, FontAwesome 10 
-        status_command SCRIPT_DIR=~/.config/i3blocks i3blocks
-}
+# bar {
+        # position top
+        # font pango: Hack, FontAwesome 10 
+        # status_command SCRIPT_DIR=~/.config/i3blocks i3blocks
+# }
+
+# POLYBAR AAAAHH YEAHHH
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Start Variety
 exec --no-startup-id variety
