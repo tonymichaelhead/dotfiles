@@ -1,7 +1,6 @@
 ack
 alsa-plugins
 alsa-utils
-amd-ucode
 autoconf
 automake
 base
@@ -39,8 +38,6 @@ mutt
 neofetch
 network-manager-applet
 networkmanager
-nvidia
-nvidia-utils
 openssh
 p7zip
 patch
@@ -69,7 +66,6 @@ which
 wine
 winetricks
 xclip
-xf86-video-vesa
 xorg-bdftopcf
 xorg-docs
 xorg-font-util
