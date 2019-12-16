@@ -1,0 +1,4 @@
+st.font: SpaceMono Nerd Font Mono:pixelsize=16:antialias=true:trueautohint=true;
+st.alpha: 0.8
+st.background: #000
+
