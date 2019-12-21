@@ -2,6 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Custom PATH exports
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/charles/bin:$PATH"
 export PATH=$PATH:$HOME/scripts
 export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
