@@ -127,6 +127,8 @@ bindsym F12 exec escrotum -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictu
 # Run emoji selector
 bindsym $mod+backslash exec ~/scripts/dmenuunicode
 
+# My super sweet latin dictionary
+bindsym $mod+Delete exec grep "" ~/Documents/latin.txt | dmenu -i -l 20 -fn Monospace-18
 # Bindings for volume and update i3blocks volume module
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 5%+ && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 5%- && pkill -RTMIN+10 i3blocks
@@ -285,7 +287,8 @@ bindsym $mod+c exec "nohup google-chrome-stable --ignore-certificate-errors --ig
 bindsym $mod+m bar mode toggle
 
 # Monitor setup
-exec --no-startup-id xrandr --output HDMI1 --auto --right-of LVDS1
+# exec --no-startup-id xrandr --output HDMI1 --auto --left-of eDP1 --primary --output DP1 --auto --left-of HDMI1 --primary
+exec --no-startup-id ~/i3-autodisplay/i3-autodisplay -config ~/.config/i3-autodisplay/config.yml
 
 # Compton transparency
 exec --no-startup-id "sh -c 'sleep 0.5; exec compton'"
