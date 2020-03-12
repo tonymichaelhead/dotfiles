@@ -1,6 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# Environment Variables
+export TEST_CHROME_ID='5A3FF792'
 # Custom PATH exports
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/charles/bin:$PATH"

@@ -9,7 +9,7 @@ set updatetime=100
 
 " colorscheme railscasts
 
-"Let jk escape out of insert mode
+"Let jj escape out of insert mode
 inoremap jj <ESC>
 
 " Enable scrolling with mouse
@@ -51,6 +51,8 @@ nnoremap <C-t> :tabnew<CR>
 nnoremap <C-h> :tabp<CR>
 nnoremap <C-l> :tabn<CR>
 
+" vim-trailing-whitespace
+nnoremap <leader>f :FixWhitespace<CR>
 
 " add spacing to NERDCommenter
 let NERDSpaceDelims=1
