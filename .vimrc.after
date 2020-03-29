@@ -7,7 +7,10 @@ set relativenumber
 " For faster updates of Git Gutter
 set updatetime=100
 
-" colorscheme railscasts
+
+" base16 theme
+set termguicolors
+colorscheme base16-default-dark
 
 "Let jj escape out of insert mode
 inoremap jj <ESC>
@@ -50,6 +53,9 @@ nnoremap <C-t> :tabnew<CR>
 " cycle tabs left and right with ctrl
 nnoremap <C-h> :tabp<CR>
 nnoremap <C-l> :tabn<CR>
+
+" move between splits with leader
+nnoremap <leader>w <c-w>
 
 " vim-trailing-whitespace
 nnoremap <leader>f :FixWhitespace<CR>

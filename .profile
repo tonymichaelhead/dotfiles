@@ -16,11 +16,17 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
+# Manjaro defaults
+export EDITOR=/usr/bin/nvim
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_AUTO_SCREEN_SCALE_FACTOR=0
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+
 # Define default terminal
-export TERMINAL="st"
+export TERMINAL="terminator"
 
 # Define default browser
-export BROWSER="firefox"
+export BROWSER="brave"
 
 # Load only custom ranger file manager config
 export RANGER_LOAD_DEFAULT_RC=false

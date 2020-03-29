@@ -267,10 +267,14 @@ bindsym $mod+r mode "resize"
 
 # Set inner and outer gaps
 gaps inner 10
-gaps outer 5
+gaps outer 0
 
 # Disable title bars entirely
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 1
+
+# Border colors
+# class                 border  backgr. text    indicator child_border
+client.focused          #a32a71  #a32a71 #ffffff #e62796   #e62796
 
 # Keyboard layouts
 # exec --no-startup-id "setxkbmap us -variant colemak; xset r 66"
@@ -289,6 +293,9 @@ bindsym $mod+j exec $BROWSER
 # Monitor setup
 # exec --no-startup-id xrandr --output HDMI1 --auto --left-of eDP1 --primary --output DP1 --auto --left-of HDMI1 --primary
 # exec --no-startup-id ~/i3-autodisplay/i3-autodisplay -config ~/.config/i3-autodisplay/config.yml
+
+# Disable focus border on Xfce4 whisker menu
+for_window [title="Whisker Menu"] border pixel 0
 
 # Compton transparency
 exec --no-startup-id "sh -c 'sleep 0.5; exec compton'"
