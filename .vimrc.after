@@ -1,5 +1,8 @@
-" Set sweet current line underline
-set cursorline
+" Auto refresh buffers when file changes externally
+set autoread
+
+"" Set sweet current line underline
+" set cursorline
 
 " Relative numbers are useful and cool
 set relativenumber

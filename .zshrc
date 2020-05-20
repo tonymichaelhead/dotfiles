@@ -9,6 +9,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/charles/bin:$PATH"
 export PATH=$PATH:$HOME/scripts
 export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/tony/.oh-my-zsh"
@@ -113,8 +114,10 @@ plugins=(
 # For a full list of active aliases, run `alias`.
 #
 #
-
+alias ssh-cpi="ssh cpi@192.168.1.67"
 alias chrome="nohup google-chrome-stable --ignore-certificate-errors --ignore-ssl-errors &"
+alias vim="nvim"
+alias v="vim"
 # Not necessary as defined in .oh-my-zsh/lib/directories.zsh
 # alias ll="ls -alF"
 
