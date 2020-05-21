@@ -1,39 +1,33 @@
 " NEOVIM CONFIG
 "
-" 
+ 
 let mapleader = ","
 set t_Co=128
 
 
-" Specify a directory for plugins
-" - For Neovim: stdpath('data') . '/plugged'
-" - Avoid using standard Vim directory names like 'plugin'
+" ---------------------
+" ------VIM-PLUG-----
+" ---------------------
 call plug#begin('~/.vim/plugged')
-
-" Make sure you use single quotes
 
 " On-demand loading
 Plug 'preservim/nerdtree'
-
 Plug 'airblade/vim-gitgutter'
+Plug 'jeetsukumaran/vim-buffergator'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'mileszs/ack.vim'
 
 " Plugin outside ~/.vim/plugged with post-update hook
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
-" Initialize plugin system
 call plug#end()
 
+"========================
+" End vim plug ----------
+"========================
 
 
-
-"
-"
-"
-"
-"
-"
-"
-"
 " Auto refresh buffers when file changes externally
 set autoread
 
@@ -42,10 +36,6 @@ set autoread
 
 " Relative numbers are useful and cool
 set relativenumber
-
-" For faster updates of Git Gutter
-set updatetime=100
-
 
 " base16 theme
 set termguicolors
@@ -102,10 +92,25 @@ nnoremap <leader>f :FixWhitespace<CR>
 " add spacing to NERDCommenter
 let NERDSpaceDelims=1
 
+
+" ---------------------
+" ------GIT-GUTTER-----
+" ---------------------
+" For faster updates of Git Gutter
+set updatetime=100
+
+" Gutter colours
+highlight clear SignColumn
+highlight GitGutterAdd    guifg=#009900 ctermfg=2
+highlight GitGutterChange guifg=#bbbb00 ctermfg=3
+highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+
+
 " ---------------------
 " ------NERDTREE-------
 " ---------------------
 nnoremap <Leader>n :NERDTreeToggle<CR>
+
 
 " ---------------------
 " ------ACK/AG---------
@@ -163,7 +168,6 @@ let g:ctrlp_max_files=0
 " au Syntax * RainbowParenthesesLoadRound
 " au Syntax * RainbowParenthesesLoadSquare
 " au Syntax * RainbowParenthesesLoadBraces
-
 
 
 " --------------------
