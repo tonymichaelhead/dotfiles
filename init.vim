@@ -1,22 +1,52 @@
-" Set autoread
+" NEOVIM CONFIG
+"
+ 
+let mapleader = ","
+set t_Co=128
+
+
+" ---------------------
+" ------VIM-PLUG-----
+" ---------------------
+call plug#begin('~/.vim/plugged')
+
+" On-demand loading
+Plug 'preservim/nerdtree'
+Plug 'airblade/vim-gitgutter'
+Plug 'jeetsukumaran/vim-buffergator'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'mileszs/ack.vim'
+
+" Plugin outside ~/.vim/plugged with post-update hook
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+call plug#end()
+
+"========================
+" End vim plug ----------
+"========================
+
+
+" Auto refresh buffers when file changes externally
 set autoread
 
 "" Set sweet current line underline
-set cursorline
+" set cursorline
 
 " Relative numbers are useful and cool
 set relativenumber
 
-" For faster updates of Git Gutter
-set updatetime=100
+" base16 theme
+set termguicolors
+" colorscheme base16-default-dark
 
-" colorscheme railscasts
-
-"Let jk escape out of insert mode
+"Let jj escape out of insert mode
 inoremap jj <ESC>
 
 " Enable scrolling with mouse
-" :set mouse=a
+" set mouse=a
+" set ttymouse=sgr
 
 " Remap homerow movement keys for colemak
 " noremap n j
@@ -53,9 +83,34 @@ nnoremap <C-t> :tabnew<CR>
 nnoremap <C-h> :tabp<CR>
 nnoremap <C-l> :tabn<CR>
 
+" move between splits with leader
+nnoremap <leader>w <c-w>
+
+" vim-trailing-whitespace
+nnoremap <leader>f :FixWhitespace<CR>
 
 " add spacing to NERDCommenter
 let NERDSpaceDelims=1
+
+
+" ---------------------
+" ------GIT-GUTTER-----
+" ---------------------
+" For faster updates of Git Gutter
+set updatetime=100
+
+" Gutter colours
+highlight clear SignColumn
+highlight GitGutterAdd    guifg=#009900 ctermfg=2
+highlight GitGutterChange guifg=#bbbb00 ctermfg=3
+highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+
+
+" ---------------------
+" ------NERDTREE-------
+" ---------------------
+nnoremap <Leader>n :NERDTreeToggle<CR>
+
 
 " ---------------------
 " ------ACK/AG---------
@@ -113,7 +168,6 @@ let g:ctrlp_max_files=0
 " au Syntax * RainbowParenthesesLoadRound
 " au Syntax * RainbowParenthesesLoadSquare
 " au Syntax * RainbowParenthesesLoadBraces
-
 
 
 " --------------------
