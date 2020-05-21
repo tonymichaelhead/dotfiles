@@ -5,6 +5,7 @@ import Data.Monoid
 import System.Exit
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.DynamicBars
+import XMonad.Hooks.DynamicLog
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 
@@ -24,6 +25,13 @@ myClickJustFocuses = False
 -- Width of the window border in pixels.
 --
 myBorderWidth   = 1
+
+-- Color of current window title in xmobar.
+  -- Used to be #00CC00
+xmobarTitleColor = "#22CCDD"
+
+-- Color of current workspace in xmobar.
+xmobarCurrentWorkspaceColor = "#CEFFAC"
 
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
@@ -117,11 +125,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
 
     -- Quit xmonad
-    , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
+    , ((modm .|. shiftMask, xK_q     ), spawn "xfce4-session-logout")
 
     -- Restart xmonad
     , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
-
     -- Run xmessage with a summary of the default keybindings (useful for beginners)
     , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
     ]
@@ -240,7 +247,7 @@ myLogHook = return ()
 myStartupHook = do
         spawnOnce "nitrogen --restore &"
         spawnOnce "compton &"
-        spawnOnce "sleep 3; ~/.screenlayout/triple-monitor.sh &"
+--        spawnOnce "sleep 3; ~/.screenlayout/triple-monitor.sh &"
 
 
 ------------------------------------------------------------------------
@@ -251,7 +258,14 @@ myStartupHook = do
 main = do
   xmproc <- spawnPipe "xmobar -x 2 /home/tony/.config/xmobar/xmobarrc"
   --xmproc <- spawnPipe $ "xmobar /home/tony/.config/xmobar/xmobarrc" ++ show sid
-  xmonad $ docks defaults
+  xmonad $ docks defaults {
+        logHook = dynamicLogWithPP $ xmobarPP {
+            ppOutput = hPutStrLn xmproc
+          , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
+          , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
+          , ppSep = "   "
+      }
+  }
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
@@ -332,3 +346,4 @@ help = unlines ["The default modifier key is 'alt'. Default keybindings:",
     "mod-button1  Set the window to floating mode and move by dragging",
     "mod-button2  Raise the window to the top of the stack",
     "mod-button3  Set the window to floating mode and resize by dragging"]
+

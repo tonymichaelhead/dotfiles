@@ -5,7 +5,7 @@ Config { font = "xft:mono:pixelSize=14"
        , bgColor = "black"
        , fgColor = "grey"
        , alpha = 255
-       , position = Top
+       , position = TopW L 90
        , textOffset = -1
        , iconOffset = -1
        , lowerOnStart = True
@@ -24,6 +24,7 @@ Config { font = "xft:mono:pixelSize=14"
                                           "--normal","green","--high","red"] 10
                     , Run Network "eth1" ["-L","0","-H","32",
                                           "--normal","green","--high","red"] 10
+		    , Run StdinReader
                     , Run Cpu ["-L","3","-H","50",
                                "--normal","green","--high","red"] 10
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
@@ -33,6 +34,6 @@ Config { font = "xft:mono:pixelSize=14"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%cpu% | %memory% * %swap% | %eth0% - %eth1% }\
+       , template = "%StdinReader% }{ %cpu% | %memory% * %swap% | %eth0% - %eth1% }\
                     \{ <fc=#ee9a00>%date%</fc>| %EGPF% | %uname%"
        }
