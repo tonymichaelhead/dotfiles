@@ -11,15 +11,19 @@ set t_Co=128
 call plug#begin('~/.vim/plugged')
 
 " On-demand loading
+Plug 'ervandew/supertab'
+Plug 'jiangmiao/auto-pairs'
+Plug 'sheerun/vim-polyglot'
 Plug 'preservim/nerdtree'
 Plug 'airblade/vim-gitgutter'
 Plug 'jeetsukumaran/vim-buffergator'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'mileszs/ack.vim'
+Plug 'tpope/vim-fugitive'
 
 " Plugin outside ~/.vim/plugged with post-update hook
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -92,6 +96,25 @@ nnoremap <leader>f :FixWhitespace<CR>
 " add spacing to NERDCommenter
 let NERDSpaceDelims=1
 
+" Allow vim-polyglot to load syntax files
+syntax on
+
+" ---------------------
+" ------Tab behavior---
+" ---------------------
+" length of an actual \t character:
+set tabstop=2
+" length to use when editing text (eg. TAB and BS keys)
+" (0 for ‘tabstop’, -1 for ‘shiftwidth’):
+set softtabstop=-1
+" length to use when shifting text (eg. <<, >> and == commands)
+" (0 for ‘tabstop’):
+set shiftwidth=0
+" round indentation to multiples of 'shiftwidth' when shifting text
+" (so that it behaves like Ctrl-D / Ctrl-T):
+set shiftround
+" if set, only insert spaces; otherwise insert \t and complete with spaces:
+set expandtab
 
 " ---------------------
 " ------GIT-GUTTER-----
@@ -110,6 +133,11 @@ highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 " ------NERDTREE-------
 " ---------------------
 nnoremap <Leader>n :NERDTreeToggle<CR>
+
+" ---------------------
+" ------FZF/RIPGREP----
+" ---------------------
+nnoremap <C-p> :Files<CR>
 
 
 " ---------------------

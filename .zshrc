@@ -3,6 +3,7 @@
 
 # Environment Variables
 export TEST_CHROME_ID='5A3FF792'
+export FZF_DEFAULT_COMMAND='rg --files --follow'
 
 # Custom PATH exports
 export PATH="$HOME/.local/bin:$PATH"
@@ -10,6 +11,10 @@ export PATH="$HOME/charles/bin:$PATH"
 export PATH=$PATH:$HOME/scripts
 export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# NVM
+ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/tony/.oh-my-zsh"
@@ -121,9 +126,6 @@ alias v="vim"
 # Not necessary as defined in .oh-my-zsh/lib/directories.zsh
 # alias ll="ls -alF"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
 # Ghostwheel theme
