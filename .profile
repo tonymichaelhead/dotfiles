@@ -23,13 +23,16 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=0
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
 # Define default terminal
-export TERMINAL="terminator"
+export TERMINAL="alacritty"
 
 # Define default browser
 export BROWSER="brave"
 
 # Load only custom ranger file manager config
 export RANGER_LOAD_DEFAULT_RC=false
+
+# For Java applications in xmonad
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 # set PATH so it includes user's private bin directories
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"

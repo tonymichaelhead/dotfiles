@@ -1,7 +1,7 @@
 " NEOVIM CONFIG
 "
- 
-let mapleader = ","
+
+let mapleader = " "
 set t_Co=128
 
 
@@ -11,19 +11,24 @@ set t_Co=128
 call plug#begin('~/.vim/plugged')
 
 " On-demand loading
+Plug 'morhetz/gruvbox'
 Plug 'ervandew/supertab'
 Plug 'jiangmiao/auto-pairs'
 Plug 'sheerun/vim-polyglot'
 Plug 'preservim/nerdtree'
+Plug 'preservim/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'itchyny/lightline.vim'
 Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 
 call plug#end()
 
@@ -31,6 +36,8 @@ call plug#end()
 " End vim plug ----------
 "========================
 
+" Enable filetype plugins (nerdcommenter)
+filetype plugin on
 
 " Auto refresh buffers when file changes externally
 set autoread
@@ -39,11 +46,12 @@ set autoread
 " set cursorline
 
 " Relative numbers are useful and cool
-set relativenumber
+set number relativenumber
 
-" base16 theme
+" Themes
 set termguicolors
 " colorscheme base16-default-dark
+colorscheme gruvbox
 
 "Let jj escape out of insert mode
 inoremap jj <ESC>
@@ -77,8 +85,8 @@ nmap <leader>d :bp<bar>sp<bar>bn<bar>bd<CR>
 nmap <leader>D :bufdo bd<CR>
 
 " Switch between buffers
-noremap <S-tab> :bp<CR>
-noremap <tab> :bn<CR>
+" noremap <S-tab> :bp<CR>
+" noremap <tab> :bn<CR>
 
 " open a new tab with ctrl t
 nnoremap <C-t> :tabnew<CR>
@@ -93,8 +101,6 @@ nnoremap <leader>w <c-w>
 " vim-trailing-whitespace
 nnoremap <leader>f :FixWhitespace<CR>
 
-" add spacing to NERDCommenter
-let NERDSpaceDelims=1
 
 " Allow vim-polyglot to load syntax files
 syntax on
@@ -116,6 +122,15 @@ set shiftround
 " if set, only insert spaces; otherwise insert \t and complete with spaces:
 set expandtab
 
+" Supertab - Overide default cycle through auto complete in reverse
+let g:SuperTabDefaultCompletionType = "<c-n>"
+" ---------------------
+" --------COC----------
+" ---------------------
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gr <Plug>(coc-references)
+
+
 " ---------------------
 " ------GIT-GUTTER-----
 " ---------------------
@@ -135,9 +150,17 @@ highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 nnoremap <Leader>n :NERDTreeToggle<CR>
 
 " ---------------------
+" ----NERDCOMMENTER--__
+" ---------------------
+" add spacing to NERDCommenter
+let g:NERDSpaceDelims = 1
+map <Leader>/ <Plug>NERDCommenterToggle
+
+" ---------------------
 " ------FZF/RIPGREP----
 " ---------------------
-nnoremap <C-p> :Files<CR>
+nnoremap <leader>p :Files<CR>
+nnoremap <leader>r :Rg
 
 
 " ---------------------
@@ -150,7 +173,7 @@ if executable('ag')
 endif
 
 " \a to Ack (search in files)
-nnoremap <leader>a :Ack
+" nnoremap <leader>a :Ack
 
 " Auto walk through previews
 let g:ackpreview = 1
@@ -177,7 +200,7 @@ let g:ackpreview = 1
 " -------CTRL-P-------
 " --------------------
 " No file limit
-let g:ctrlp_max_files=0
+" let g:ctrlp_max_files=0
 
 " Use .gitignore/.hgignore files if present
 " let g:ctrlp_user_command = {

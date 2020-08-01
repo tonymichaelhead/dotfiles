@@ -7,7 +7,7 @@ export FZF_DEFAULT_COMMAND='rg --files --follow'
 
 # Custom PATH exports
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/charles/bin:$PATH"
+export PATH="/opt/charles/bin:$PATH"
 export PATH=$PATH:$HOME/scripts
 export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"

@@ -8,12 +8,13 @@ import XMonad.Hooks.DynamicBars
 import XMonad.Hooks.DynamicLog
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
+import XMonad.Layout.Spacing
 import Graphics.X11.ExtraTypes.XF86
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
-myTerminal      = "terminator"
+myTerminal      = "alacritty"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -62,18 +63,21 @@ myFocusedBorderColor = "#ff0000"
 --
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
-    -- launch a terminal
+    -- Launch programs
+    --
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
-
-    -- launch dmenu
     , ((modm,               xK_d     ), spawn "dmenu_run")
+    -- , ((modm .|. shiftMask, xK_semicolon ), spawn "gmrun") -- TODO: broken
+    , ((modm,               xK_b     ), spawn "brave")
+    , ((modm,               xK_s     ), spawn "slack")
+    , ((modm,               xK_F12   ), spawn "xfce4-screenshooter")
+    , ((modm,               xK_c     ), spawn "/opt/charles/bin/charles")
+    , ((modm,               xK_a     ), spawn "anki")
+    , ((modm,               xK_v     ), spawn "thunar")
 
-    -- TODO: broken
-    -- launch gmrun 
-    , ((modm .|. shiftMask, xK_semicolon ), spawn "gmrun")
 
     -- close focused window
-    , ((modm .|. shiftMask, xK_c     ), kill)
+    , ((modm,               xK_q     ), kill)
 
      -- Rotate through the available layout algorithms
     , ((modm,               xK_space ), sendMessage NextLayout)
@@ -126,6 +130,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     --
     -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
 
+
     -- MEDIA KEYS
     , ((0, xF86XK_AudioMute), spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle")
     , ((0, xF86XK_AudioLowerVolume), spawn "pactl set-sink-volume @DEFAULT_SINK@ -10%")
@@ -133,10 +138,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
 
     -- Quit xmonad
-    , ((modm .|. shiftMask, xK_q     ), spawn "xfce4-session-logout")
+    , ((modm .|. shiftMask, xK_r     ), spawn "xfce4-session-logout")
 
     -- Restart xmonad
-    , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
+    , ((modm              , xK_r     ), spawn "xmonad --recompile; xmonad --restart")
     -- Run xmessage with a summary of the default keybindings (useful for beginners)
     , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
     ]
@@ -156,7 +161,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
     --
     [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_p, xK_f, xK_w] [0..]
+        | (key, sc) <- zip [xK_y, xK_u, xK_l] [0..]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 
@@ -193,7 +198,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
   where
      -- default tiling algorithm partitions the screen into two panes
-     tiled   = Tall nmaster delta ratio
+     tiled   = spacing 3 $ Tall nmaster delta ratio
 
      -- The default number of windows in the master pane
      nmaster = 1
