@@ -269,7 +269,7 @@ myStartupHook = do
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main = do
-  xmproc <- spawnPipe "xmobar -x 2 /home/tony/.config/xmobar/xmobarrc"
+  xmproc <- spawnPipe "xmobar -x 2"
   --xmproc <- spawnPipe $ "xmobar /home/tony/.config/xmobar/xmobarrc" ++ show sid
   xmonad $ docks defaults {
         logHook = dynamicLogWithPP $ xmobarPP {
