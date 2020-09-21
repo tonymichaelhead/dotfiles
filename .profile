@@ -37,3 +37,5 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 # set PATH so it includes user's private bin directories
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 PATH="$PATH:$HOME/.composer/vendor/bin"
+
+export PATH="$HOME/.cargo/bin:$PATH"

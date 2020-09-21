@@ -154,6 +154,8 @@ nnoremap <Leader>n :NERDTreeToggle<CR>
 " ---------------------
 " add spacing to NERDCommenter
 let g:NERDSpaceDelims = 1
+" Align line-wise comment delimiters flush left
+let g:NERDDefaultAlign = 'left'
 map <Leader>/ <Plug>NERDCommenterToggle
 
 " ---------------------

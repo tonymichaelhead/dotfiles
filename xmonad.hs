@@ -71,9 +71,11 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_b     ), spawn "brave")
     , ((modm,               xK_s     ), spawn "slack")
     , ((modm,               xK_F12   ), spawn "xfce4-screenshooter")
-    , ((modm,               xK_c     ), spawn "/opt/charles/bin/charles")
+    , ((modm,               xK_c     ), spawn "charles")
     , ((modm,               xK_a     ), spawn "anki")
     , ((modm,               xK_v     ), spawn "thunar")
+    , ((modm,               xK_f     ), spawn "godot")
+    , ((modm,               xK_semicolon     ), spawn "pavucontrol")
 
 
     -- close focused window

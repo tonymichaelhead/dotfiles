@@ -8,6 +8,7 @@ export FZF_DEFAULT_COMMAND='rg --files --follow'
 # Custom PATH exports
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/opt/charles/bin:$PATH"
+export PATH="/opt/bin:$PATH"
 export PATH=$PATH:$HOME/scripts
 export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -123,6 +124,7 @@ alias ssh-cpi="ssh cpi@192.168.1.67"
 alias chrome="nohup google-chrome-stable --ignore-certificate-errors --ignore-ssl-errors &"
 alias vim="nvim"
 alias v="vim"
+alias tonycast="ngrok http 8000 --subdomain=tonycast"
 # Not necessary as defined in .oh-my-zsh/lib/directories.zsh
 # alias ll="ls -alF"
 
