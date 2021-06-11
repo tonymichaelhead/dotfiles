@@ -66,7 +66,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Launch programs
     --
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
-    , ((modm,               xK_d     ), spawn "dmenu_run")
+    , ((modm,               xK_d     ), spawn "dmenu_run -fn 'Ubuntu Nerd Font 12'")
     -- , ((modm .|. shiftMask, xK_semicolon ), spawn "gmrun") -- TODO: broken
     , ((modm,               xK_b     ), spawn "brave")
     , ((modm,               xK_s     ), spawn "slack")
@@ -200,7 +200,8 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
   where
      -- default tiling algorithm partitions the screen into two panes
-     tiled   = spacing 3 $ Tall nmaster delta ratio
+     tiled   = spacing 6 $ Tall nmaster delta ratio
+     -- tiled = spacing 5 $ ResizableTall nmaster delta ratio []
 
      -- The default number of windows in the master pane
      nmaster = 1
@@ -261,7 +262,7 @@ myLogHook = return ()
 -- By default, do nothing.
 myStartupHook = do
         spawnOnce "nitrogen --restore &"
-        spawnOnce "compton &"
+        spawnOnce "picom &"
 --        spawnOnce "sleep 3; ~/.screenlayout/triple-monitor.sh &"
 
 

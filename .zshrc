@@ -10,8 +10,13 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="/opt/charles/bin:$PATH"
 export PATH="/opt/bin:$PATH"
 export PATH=$PATH:$HOME/scripts
-export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
+# export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+# export PATH="$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH"
+export PATH="$HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam/steamapps/common/CrossCode:$PATH"
+
+# Set nvim as manpager
+export MANPAGER="nvim -c 'set ft=man' -"
 
 # NVM
  export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -125,6 +130,7 @@ alias chrome="nohup google-chrome-stable --ignore-certificate-errors --ignore-ss
 alias vim="nvim"
 alias v="vim"
 alias tonycast="ngrok http 8000 --subdomain=tonycast"
+alias batdiff="git diff --name-only --diff-filter=d | xargs bat --diff"
 # Not necessary as defined in .oh-my-zsh/lib/directories.zsh
 # alias ll="ls -alF"
 
@@ -212,6 +218,9 @@ alias tonycast="ngrok http 8000 --subdomain=tonycast"
 # oh my zsh must be sourced after powerline mode is set
 source $ZSH/oh-my-zsh.sh
 
+# Load rbenv
+eval "$(rbenv init -)"
+
 # vim mode config
 # ---------------
 
@@ -252,3 +261,6 @@ zstyle :compinstall filename '/home/tony/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+
+# Random Latin verse on terminal startup
+# ~/projects/random-vul/random-vul.sh

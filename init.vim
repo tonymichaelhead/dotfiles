@@ -12,6 +12,7 @@ call plug#begin('~/.vim/plugged')
 
 " On-demand loading
 Plug 'morhetz/gruvbox'
+Plug 'tomasr/molokai'
 Plug 'ervandew/supertab'
 Plug 'jiangmiao/auto-pairs'
 Plug 'sheerun/vim-polyglot'
@@ -24,17 +25,21 @@ Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'APZelos/blamer.nvim'
 
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
+" Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 
 call plug#end()
 
 "========================
 " End vim plug ----------
 "========================
+
+" Enable Blamer
+let g:blamer_enabled = 1
 
 " Enable filetype plugins (nerdcommenter)
 filetype plugin on
@@ -51,7 +56,10 @@ set number relativenumber
 " Themes
 set termguicolors
 " colorscheme base16-default-dark
-colorscheme gruvbox
+" colorscheme gruvbox
+colorscheme molokai
+" Let colorscheme match original monokai bg color
+" let g:molokai_original = 1
 
 "Let jj escape out of insert mode
 inoremap jj <ESC>
@@ -129,6 +137,12 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 " ---------------------
 nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>gr <Plug>(coc-references)
+
+" COC Prettier settup
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+vmap <leader>a  <Plug>(coc-format-selected)
+nmap <leader>a  <Plug>(coc-format-selected)
+
 
 
 " ---------------------
